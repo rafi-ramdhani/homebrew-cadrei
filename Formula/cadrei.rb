@@ -2,35 +2,36 @@
 # installs the release binary for the machine (no build, no bottles). The
 # release step copies it into the rafi-ramdhani/homebrew-cadrei tap.
 class Cadrei < Formula
-  desc "Plug-and-play orchestration for Claude Code"
-  homepage "https://github.com/rafi-ramdhani/cadrei"
-  version "0.2.0"
-  license "MIT"
+  desc "Team of Claude Code helpers you lead from one chat"
+  homepage "https://cadrei.dev"
+  # Some Homebrew versions read "64" from these URLs, so say it.
+  version "0.2.1"
+  license all_of: ["MIT", :cannot_represent]
+
+  depends_on "tmux"
 
   on_macos do
     on_arm do
-      url "https://github.com/rafi-ramdhani/cadrei/releases/download/v0.2.0/cadrei_0.2.0_darwin_arm64.tar.gz"
-      sha256 "54572b5f6e9caa83a96c4fa69f083e06469f2c187bbf59265e0eae4163e38cb1"
+      url "https://github.com/rafi-ramdhani/cadrei/releases/download/v0.2.1/cadrei_0.2.1_darwin_arm64.tar.gz"
+      sha256 "b5374dcdeb9bb352cccfd1766b1ef3e7e0f0327d9fe5ee852d45b302280d6f1f"
     end
     on_intel do
-      url "https://github.com/rafi-ramdhani/cadrei/releases/download/v0.2.0/cadrei_0.2.0_darwin_amd64.tar.gz"
-      sha256 "40e0d98054a1a19edebe2cdee96be304268b1f371dce3f79aca225a0ee6fc127"
+      url "https://github.com/rafi-ramdhani/cadrei/releases/download/v0.2.1/cadrei_0.2.1_darwin_amd64.tar.gz"
+      sha256 "7b655f109df7db5094ef23c05c5ce96df78bd19e4f13cbf2ba7815edf4fe64c2"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/rafi-ramdhani/cadrei/releases/download/v0.2.0/cadrei_0.2.0_linux_arm64.tar.gz"
-      sha256 "f8d3f515b859cb077d25c237cf0de8757df8c7fbe91b9445f33d60c9e0dc7780"
+      url "https://github.com/rafi-ramdhani/cadrei/releases/download/v0.2.1/cadrei_0.2.1_linux_arm64.tar.gz"
+      sha256 "214602a05be24389a6134f519870e4bd21917f36f9d33023ae80391f50c8514c"
     end
     on_intel do
-      url "https://github.com/rafi-ramdhani/cadrei/releases/download/v0.2.0/cadrei_0.2.0_linux_amd64.tar.gz"
-      sha256 "f6051603e59f25bd37749cd8cf5943ac983bff5dea148a191c9dc973fe72a2f3"
+      url "https://github.com/rafi-ramdhani/cadrei/releases/download/v0.2.1/cadrei_0.2.1_linux_amd64.tar.gz"
+      sha256 "886d231ce85ece79d69a743c6a6a36380505edb89ca612c7d96f9153627d8af3"
     end
     depends_on "git"
   end
-
-  depends_on "tmux"
 
   def install
     bin.install "cadrei"
@@ -41,14 +42,15 @@ class Cadrei < Formula
       cadrei runs Claude Code, which a formula cannot depend on. Install it with:
         brew install --cask claude-code
       Then run: cadrei
-      To remove cadrei later: cadrei uninstall, then brew uninstall cadrei
+      To remove cadrei, run cadrei uninstall: it removes its hooks and links, then the program.
+      To try cadrei fresh and keep your setup, run cadrei uninstall --archive --keep-program.
     EOS
   end
 
   test do
     assert_match version.to_s, shell_output("#{bin}/cadrei --version")
     ENV["HOME"] = testpath
-    system bin/"cadrei", "init", "demo"
+    system bin/"cadrei", "new", "demo"
     assert_path_exists testpath/".cadrei/demo/playbook.md"
   end
 end
