@@ -5,30 +5,30 @@ class Cadrei < Formula
   desc "Team of Claude Code helpers you lead from one chat"
   homepage "https://cadrei.dev"
   # Some Homebrew versions read "64" from these URLs, so say it.
-  version "0.2.1"
+  version "0.2.2"
   license all_of: ["MIT", :cannot_represent]
 
   depends_on "tmux"
 
   on_macos do
     on_arm do
-      url "https://github.com/rafi-ramdhani/cadrei/releases/download/v0.2.1/cadrei_0.2.1_darwin_arm64.tar.gz"
-      sha256 "b5374dcdeb9bb352cccfd1766b1ef3e7e0f0327d9fe5ee852d45b302280d6f1f"
+      url "https://github.com/rafi-ramdhani/cadrei/releases/download/v0.2.2/cadrei_0.2.2_darwin_arm64.tar.gz"
+      sha256 "84866bf58a091e7f79b546cc1c5f7f66a8c845957fa173a13769d6efe32d6cdb"
     end
     on_intel do
-      url "https://github.com/rafi-ramdhani/cadrei/releases/download/v0.2.1/cadrei_0.2.1_darwin_amd64.tar.gz"
-      sha256 "7b655f109df7db5094ef23c05c5ce96df78bd19e4f13cbf2ba7815edf4fe64c2"
+      url "https://github.com/rafi-ramdhani/cadrei/releases/download/v0.2.2/cadrei_0.2.2_darwin_amd64.tar.gz"
+      sha256 "b6ca95445c5c776243ad54607e474e6b11e32e3c1754b5d5144bdf5c3cbb2dd1"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/rafi-ramdhani/cadrei/releases/download/v0.2.1/cadrei_0.2.1_linux_arm64.tar.gz"
-      sha256 "214602a05be24389a6134f519870e4bd21917f36f9d33023ae80391f50c8514c"
+      url "https://github.com/rafi-ramdhani/cadrei/releases/download/v0.2.2/cadrei_0.2.2_linux_arm64.tar.gz"
+      sha256 "d6ac621a0e0a0097959ba6926f213519e811717deac1b9f310f51bbcc55ddaaa"
     end
     on_intel do
-      url "https://github.com/rafi-ramdhani/cadrei/releases/download/v0.2.1/cadrei_0.2.1_linux_amd64.tar.gz"
-      sha256 "886d231ce85ece79d69a743c6a6a36380505edb89ca612c7d96f9153627d8af3"
+      url "https://github.com/rafi-ramdhani/cadrei/releases/download/v0.2.2/cadrei_0.2.2_linux_amd64.tar.gz"
+      sha256 "3f0a6db22de21e008af8c96eda72504aceb6b5921b41792ba912d51ea450450b"
     end
     depends_on "git"
   end
